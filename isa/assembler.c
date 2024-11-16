@@ -11,9 +11,9 @@ typedef enum {
   B01 = 5,
   B02 = 6,
   B03 = 7
-} InstructionSets;
+} instructions;
 
-InstructionSets instruction_to_machine(const char *instr){
+instructions instruction_to_machine(const char *instr){
 
   if(strcmp(instr, "ADD") == 0) return ADD;
   if(strcmp(instr, "LSH") == 0) return LSH;
@@ -23,6 +23,12 @@ InstructionSets instruction_to_machine(const char *instr){
   if(strcmp(instr, "1") == 0) return B01;
   if(strcmp(instr, "2") == 0) return B02;
   if(strcmp(instr, "3") == 0) return B03;
+
+}
+
+void txt_to_bin(FILE *fptr){
+  FILE *fptr_b = fopen("binary_instr.bin", "wb");
+  
 
 }
 
@@ -49,7 +55,7 @@ int main(void){
       *(instr + count) = '\0';
       printf("%s\n", instr);
       count = 0;
-      InstructionSets code = instruction_to_machine(instr);
+      instructions code = instruction_to_machine(instr);
 
       switch (code) {   
         case ADD: fprintf(fptr_mc,"0");
@@ -77,6 +83,8 @@ int main(void){
     
 
   }
+
+
 
   free(instr);
   fclose(fptr_mc);
