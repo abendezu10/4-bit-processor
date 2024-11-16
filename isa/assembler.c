@@ -26,11 +26,6 @@ instructions instruction_to_machine(const char *instr){
 
 }
 
-void txt_to_bin(FILE *fptr){
-  FILE *fptr_b = fopen("binary_instr.bin", "wb");
-  
-
-}
 
 
 int main(void){
@@ -45,7 +40,7 @@ int main(void){
   char *instr = (char*) malloc(4 * sizeof(char));
 
   char letter;
-  FILE *fptr_mc = fopen("machine_code.txt", "w");
+  FILE *fptr_mc = fopen("machine_code.bin", "w");
   int count = 0;
 
   while((letter = fgetc(fptr)) != EOF){
@@ -53,7 +48,6 @@ int main(void){
   
     if(*(instr + count) == ' ' || *(instr + count) == '\n'){
       *(instr + count) = '\0';
-      printf("%s\n", instr);
       count = 0;
       instructions code = instruction_to_machine(instr);
 
@@ -66,13 +60,13 @@ int main(void){
         break;
         case RA2: fprintf(fptr_mc,"1");
         break;
-        case B00: fprintf(fptr_mc, "00");
+        case B00: fprintf(fptr_mc, "00\n");
         break;
-        case B01: fprintf(fptr_mc, "01");
+        case B01: fprintf(fptr_mc, "01\n");
         break;
-        case B02: fprintf(fptr_mc, "10");
+        case B02: fprintf(fptr_mc, "10\n");
         break;
-        case B03: fprintf(fptr_mc, "11");
+        case B03: fprintf(fptr_mc, "11\n");
         break;
           
       }
