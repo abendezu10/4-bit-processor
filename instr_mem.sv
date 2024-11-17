@@ -12,8 +12,7 @@ module instr_mem (
 
 
   always_comb begin 
-
-      data_o <= memory[instr_addr]
+    data_o <= memory[instr_addr]
   end
 endmodule
 

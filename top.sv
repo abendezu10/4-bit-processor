@@ -7,11 +7,6 @@ import top(
   );
 
 
-  alu alu_element(
-    .num1(data_in1),
-    .num2(data_in2),
-    .opcode(opcode),
-    .led(data_o)
-    );
+ 
 
 
